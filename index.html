@@ -300,9 +300,14 @@
         function confirmClear() { if(confirm("Effacer tout le plan ?")) { saveState(); points=[]; shapes=[]; draw(); parler("Plan effacé"); } }
     </script>
 <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/geo-magie/sw.js');
-  }
-</script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('Application prête !'))
+            .catch(err => console.log('Erreur de chargement'));
+        });
+      }
+    </script>
+</body>
 </body>
 </html>
