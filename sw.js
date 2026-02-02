@@ -1,7 +1,13 @@
+const cacheName = 'geo-magie-v1';
+const assets = [
+  '/GeoMagie/',
+  '/GeoMagie/index.html'
+];
+
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open('geo-magie-v1').then((cache) => {
-      return cache.addAll(['/geo-magie/', '/geo-magie/index.html']);
+    caches.open(cacheName).then((cache) => {
+      return cache.addAll(assets);
     })
   );
 });
